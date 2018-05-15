@@ -1,0 +1,28 @@
+<table class="table">
+    <thead>
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>qty</td>
+            <td>price</td>
+        </tr>
+    </thead>
+    <tbody>
+     <?php
+     $value =  json_decode($value);
+
+    
+
+     foreach($value as $item){
+         echo "<tr>";
+            echo "<td>$item->id</td>";
+            echo "<td>$item->name</td>";
+            echo "<td>$item->quantity</td>";
+            echo "<td>$item->price</td>";
+         echo "</tr>";
+     }
+
+     ?>
+    </tbody>
+</table>
+

@@ -1,0 +1,4 @@
+title: PagseguroController
+modelClass: Indev\Pagseguro\Models\Pagseguro
+toolbar:
+    buttons: reorder_toolbar

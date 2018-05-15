@@ -1,0 +1,16 @@
+plugin:
+    name: 'indev.pagseguro::lang.plugin.name'
+    description: 'indev.pagseguro::lang.plugin.description'
+    author: Indev
+    icon: oc-icon-dollar
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: 'indev.pagseguro::lang.plugin.name'
+        url: indev/pagseguro/pagsegurocontroller
+        icon: icon-credit-card
+        sideMenu:
+            side-menu-item:
+                label: Transações
+                url: indev/pagseguro/pagsegurocontroller
+                icon: icon-credit-card

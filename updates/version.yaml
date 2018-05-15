@@ -1,0 +1,17 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table indev_pagseguro_'
+    - builder_table_create_indev_pagseguro_.php
+1.0.3:
+    - 'Updated table indev_pagseguro_'
+    - builder_table_update_indev_pagseguro_.php
+1.0.4:
+    - 'Updated table indev_pagseguro_'
+    - builder_table_update_indev_pagseguro__2.php
+1.0.5:
+    - 'Updated table indev_pagseguro_'
+    - builder_table_update_indev_pagseguro__3.php
+1.0.6:
+    - 'Updated table indev_pagseguro_'
+    - builder_table_update_indev_pagseguro__4.php

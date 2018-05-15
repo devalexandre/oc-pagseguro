@@ -1,0 +1,25 @@
+columns:
+    id:
+        label: id
+        type: number
+    items:
+        label: items
+        type: partial
+        path: items
+    total:
+        label: total
+        type: text
+    user:
+        label: Usuario
+        type: number
+        select: name
+        relation: user
+    transaction_id:
+        label: transaction_id
+        type: text
+    status:
+        label: status
+        type: text
+    reference:
+        label: reference
+        type: text
