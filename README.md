@@ -27,3 +27,31 @@ return [
 ];
 
 ```
+
+## How To
+
+``` php 
+function onStart(){
+ $this['dados'] =   ['id'=>1,'name'=>'indev web teste','price'=>1.00]; 
+}
+```
+
+``` html
+
+<a href="#"
+data-request='Pagseguro::onAdd' 
+data-request-data="item: ' {{ dados | json_encode }}'"
+data-request-success='console.log(data)'
+>Add Item</a>
+</br>
+<a href="#"
+data-request='Pagseguro::onCheckout'
+data-request-success='console.log(data.result)'
+>checkout</a>
+</br>
+<a href="#"
+data-request='Pagseguro::onClear'
+data-request-success='console.log(data)'
+>onClear</a>
+
+```
