@@ -177,7 +177,7 @@ if(Session::has('items'))
             'status' => $this->getStatus($data->getStatus()),
         ]);
 
-        var_dump($pagseguro);
+        return Redirect::to('/');
             
         } catch (\Exception $error) { // Caso ocorreu algum erro
             echo $error->getMessage(); // Exibe na tela a mensagem de erro
