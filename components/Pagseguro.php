@@ -153,16 +153,6 @@ if(Session::has('items'))
            $pagseguro->total = $total;
            $pagseguro->reference = $reference;
            $pagseguro->save();
-    
-         
-
-            /*
-            c04386030582794408294@sandbox.pagseguro.com.br
-            b0104kWY24xN2m55
-
-            Número: 4111111111111111
-            Bandeira: VISA Válido até: 12/2030 CVV: 123
-            */
 
             return Redirect::to($response->getRedirectionUrl());
 
@@ -174,18 +164,12 @@ if(Session::has('items'))
     public function onReturn(){
         $transaction = input('transaction');
 
-
-// http://dev.octobercms/pagseguro/return?transaction=BD8200AE-B3DB-445C-9FF2-9D97F3EFAC3F
         try {
             $service = new Locator($this->credentials()); // Cria instância do serviço de localização de transações
             
             $transaction = $service->getByCode($transaction );
         
             $data = $transaction->getDetails();
-
-          //  var_dump($transaction);    exit; // Exibe na tela a transação
-
-         
            
             $pagseguro  =  PagseguroModel::where('reference','=', $data->getReference())
             ->update([ 
