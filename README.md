@@ -1,5 +1,4 @@
-###
-Seja um apoiador do octobercms
+## Seja um apoiador do octobercms
 [![patreon](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl-jfhjJPyaukslkx14sAUv7rJQHo4n26AXBuc4sjGMK6A-DWF)](https://www.patreon.com/bePatron?c=1683878&rid=2525719)
 # oc-pagseguro
 component octobercms for pagseguro
