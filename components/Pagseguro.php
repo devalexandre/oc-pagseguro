@@ -77,7 +77,10 @@ class Pagseguro extends ComponentBase
 
     }
     public function onAdd(){
-        $item = json_decode(input('item'),true);
+
+        $cart = [];
+
+        $item = input('item');
 
 if(Session::has('items'))
         $cart = Session::get('items');
@@ -102,7 +105,8 @@ if(Session::has('items'))
 
         Session::put('items',$cart);
 
-        return json_encode($cart);
+        if($item['redirect'])
+        return Redirect::to($item['redirect']);
 
     }
 
@@ -115,7 +119,7 @@ if(Session::has('items'))
 
         try {
 
-            
+       
             $items = Session::get('items');
 
            $user  = Auth::getUser();
@@ -153,6 +157,16 @@ if(Session::has('items'))
            $pagseguro->total = $total;
            $pagseguro->reference = $reference;
            $pagseguro->save();
+    
+       
+
+            /*
+            c04386030582794408294@sandbox.pagseguro.com.br
+            b0104kWY24xN2m55
+
+            Número: 4111111111111111
+            Bandeira: VISA Válido até: 12/2030 CVV: 123
+            */
 
             return Redirect::to($response->getRedirectionUrl());
 
@@ -164,12 +178,15 @@ if(Session::has('items'))
     public function onReturn(){
         $transaction = input('transaction');
 
+
+// http://dev.octobercms/pagseguro/return?transaction=BD8200AE-B3DB-445C-9FF2-9D97F3EFAC3F
         try {
             $service = new Locator($this->credentials()); // Cria instância do serviço de localização de transações
             
             $transaction = $service->getByCode($transaction );
         
             $data = $transaction->getDetails();
+
            
             $pagseguro  =  PagseguroModel::where('reference','=', $data->getReference())
             ->update([ 
@@ -177,7 +194,7 @@ if(Session::has('items'))
             'status' => $this->getStatus($data->getStatus()),
         ]);
 
-        return Redirect::to('/');
+        return Redirect::to('/status');
             
         } catch (\Exception $error) { // Caso ocorreu algum erro
             echo $error->getMessage(); // Exibe na tela a mensagem de erro

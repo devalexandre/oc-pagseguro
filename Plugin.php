@@ -3,6 +3,7 @@
 use App;
 use System\Classes\PluginBase;
 use Illuminate\Foundation\AliasLoader;
+use RainLab\User\Models\User as UserModel;
 
 class Plugin extends PluginBase
 {
@@ -27,11 +28,14 @@ class Plugin extends PluginBase
 
 
 
-
     public function boot(){
         $autoloader = require __DIR__.'/../../../vendor/autoload.php';
 
      \Doctrine\Common\Annotations\AnnotationRegistry::registerLoader([$autoloader, 'loadClass']);
+
+     UserModel::extend(function($model){
+        $model->hasOne['pagseguro'] = 'Indev\Pagseguro\Models\Pagseguro';
+    }) ;
 
     }
 }
