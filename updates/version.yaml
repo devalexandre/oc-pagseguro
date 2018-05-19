@@ -15,3 +15,6 @@
 1.0.6:
     - 'Updated table indev_pagseguro_'
     - builder_table_update_indev_pagseguro__4.php
+1.0.7:
+    - 'support a user plugin'
+    - 'add redirect in component after return pagseguro'
