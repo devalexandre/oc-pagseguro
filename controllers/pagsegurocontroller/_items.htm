@@ -9,19 +9,19 @@
     </thead>
     <tbody>
      <?php
-     $value =  json_decode($value);
 
-    
-
+     if(!empty($value)){
+      
+     
      foreach($value as $item){
          echo "<tr>";
-            echo "<td>$item->id</td>";
-            echo "<td>$item->name</td>";
-            echo "<td>$item->quantity</td>";
-            echo "<td>$item->price</td>";
+            echo "<td>".$item['id']."</td>";
+            echo "<td>".$item['name']."</td>";
+            echo "<td>".$item['quantity']."</td>";
+            echo "<td>".$item['price']."</td>";
          echo "</tr>";
      }
-
+    }
      ?>
     </tbody>
 </table>
