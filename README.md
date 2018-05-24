@@ -10,16 +10,19 @@ Rainlab User plugin
 ## Install
 
 ```
-cd plugins
-mkdir indev
-cd indev 
-git clone https://github.com/devalexandre/oc-pagseguro.git
+
+git clone https://github.com/devalexandre/oc-pagseguro.git plugins/indev/pagseguro
+
+php artisan october:up
 
 ```
 
 apos clonar o repositorio crie o arquivo pagseguro.php em seu config
 
 ``` php
+
+
+
 <?php
 
 return [
@@ -50,14 +53,15 @@ apos ter os itens em seu "carrinho" basta gerar a url de checkout
 /checkout
 ``` html
 
-<a href="#"
-data-request='Pagseguro::onCheckout'
-data-request-success='console.log(data.result)'
->checkout</a>
-</br>
-<a href="#"
-data-request='Pagseguro::onClear'
-data-request-success='console.log(data)'
->onClear</a>
+    <a href="#"
+    data-request='Pagseguro::onCheckout'
+    data-request-success='console.log(data.result)'
+    >checkout</a>
+    </br>
+    </br>
+    <a href="#"
+    data-request='Pagseguro::onClear'
+    data-request-success='console.log(data)'
+    >onClear</a>
 
 ```
