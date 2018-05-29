@@ -197,6 +197,28 @@ if(Session::has('items'))
         }
     }
 
+    public function onNodification(){
+        try {
+            $service = input('notificationType') == 'preApproval'
+                       ? new SubscriptionLocator($this->credentials())
+                       : new TransactionLocator($this->credentials()); // Cria instância do serviço de acordo com o tipo da notificação
+                       
+            $purchase = $service->getByNotification(input('notificationCode'));
+            $data = $purchase->getDetails();
+
+            $pagseguro  =  PagseguroModel::where('reference','=', $data->getReference())
+            ->update([ 
+            'transaction_id'=>$data->getCode(),
+            'status' => $this->getStatus($data->getStatus()),
+        ]);
+
+        
+            var_dump($purchase); // Exibe na tela a transação ou assinatura atualizada
+        } catch (Exception $error) { // Caso ocorreu algum erro
+            echo $error->getMessage(); // Exibe na tela a mensagem de erro
+        }
+    }
+
         protected function getStatus($code){
 
             switch($code){
